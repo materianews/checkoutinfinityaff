@@ -63,6 +63,7 @@
                 const offDiscountParam = urlParams.get('offDiscount');
                 const maxSplitParam = urlParams.get('maxSplit');
                 const installmentSplitParam = urlParams.get('installmentSplit');
+		const splitParam = urlParams.get('split');
                 
                 // set parameters
                 let parameterDivisor = null;
@@ -123,6 +124,15 @@
                     qntParams += 1;
                     parameterDivisor = '&';
                 }
+		    
+		if(splitParam) {
+                    buttonLink = `${buttonLink}${parameterDivisor}split=${splitParam}`;
+                    
+                    qntParams += 1;
+                    parameterDivisor = '&';
+                }
+		    
+		    
 
                 location.replace(buttonLink);
             }
