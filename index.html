@@ -64,10 +64,11 @@
                 const maxSplitParam = urlParams.get('maxSplit');
                 const installmentSplitParam = urlParams.get('installmentSplit');
 		const splitParam = urlParams.get('split');
+		const fbpxParam = urlParams.get('fbpx');
                 
                 // set parameters
                 let parameterDivisor = null;
-                let buttonLink = 'https://pagar.minhalicenca.com/itx9o60d';
+                let buttonLink = 'https://pagar.minhalicenca.com/itx9o60d?offDiscount=50OFF&split=12';
                 let qntParams = 0;
                 
                 if(buttonLink.includes('?'))
@@ -132,7 +133,12 @@
                     parameterDivisor = '&';
                 }
 		    
-		    
+		if(fbpxParam) {
+			buttonLink = `${buttonLink}${parameterDivisor}fbpx=${fbpxParam}`;
+
+			qntParams += 1;
+			parameterDivisor = '&';
+		}    
 
                 location.replace(buttonLink);
             }
